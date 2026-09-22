@@ -90,6 +90,7 @@ public class Register_Page extends javax.swing.JFrame {
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         btnlogin = new javax.swing.JButton();
@@ -109,21 +110,31 @@ public class Register_Page extends javax.swing.JFrame {
         rbFemale = new javax.swing.JRadioButton();
         rbOther = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness - Copy.png"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(1366, 768));
+        jLabel2.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jLabel2.setName(""); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(1366, 768));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1368, 766));
+        setMinimumSize(new java.awt.Dimension(1368, 766));
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setPreferredSize(new java.awt.Dimension(1368, 766));
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 2, true));
+        jPanel4.setMaximumSize(new java.awt.Dimension(1366, 768));
+        jPanel4.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1366, 768));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("SIGNUP");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 19, 128, 36));
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 128, 36));
 
         btnlogin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login.png"))); // NOI18N
@@ -133,7 +144,7 @@ public class Register_Page extends javax.swing.JFrame {
                 btnloginActionPerformed(evt);
             }
         });
-        jPanel4.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 307, -1, -1));
+        jPanel4.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 520, -1, -1));
 
         btnExit.setBackground(new java.awt.Color(255, 102, 102));
         btnExit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -144,53 +155,58 @@ public class Register_Page extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel4.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 308, 93, -1));
+        jPanel4.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 560, 93, -1));
 
         txtFullName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtFullName.setForeground(new java.awt.Color(255, 0, 102));
         txtFullName.setText("Full Name");
-        jPanel4.add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+        jPanel4.add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
 
         txtAge.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtAge.setForeground(new java.awt.Color(255, 0, 102));
         txtAge.setText("Age");
-        jPanel4.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        jPanel4.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, -1, -1));
 
         txtEmail.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 0, 102));
         txtEmail.setText("Email");
-        jPanel4.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        jPanel4.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 70, -1));
 
         txtPassword.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(255, 0, 102));
         txtPassword.setText("Password");
-        jPanel4.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        jPanel4.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
         txtGender.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtGender.setForeground(new java.awt.Color(255, 0, 102));
         txtGender.setText("Gender");
-        jPanel4.add(txtGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+        jPanel4.add(txtGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
 
+        txtFullname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFullnameActionPerformed(evt);
+            }
+        });
         txtFullname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtFullnameKeyReleased(evt);
             }
         });
-        jPanel4.add(txtFullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 66, 250, -1));
+        jPanel4.add(txtFullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 250, -1));
 
         txtage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtageKeyReleased(evt);
             }
         });
-        jPanel4.add(txtage, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 104, 250, -1));
+        jPanel4.add(txtage, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 250, -1));
 
         txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtemailKeyReleased(evt);
             }
         });
-        jPanel4.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 142, 250, -1));
+        jPanel4.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 250, -1));
 
         btnRegister.setBackground(new java.awt.Color(102, 102, 255));
         btnRegister.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -201,7 +217,7 @@ public class Register_Page extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel4.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 272, -1, -1));
+        jPanel4.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, -1, -1));
 
         btnReset.setBackground(new java.awt.Color(102, 102, 255));
         btnReset.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -212,14 +228,14 @@ public class Register_Page extends javax.swing.JFrame {
                 btnResetActionPerformed(evt);
             }
         });
-        jPanel4.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 272, -1, -1));
+        jPanel4.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, -1, -1));
 
         txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtpasswordKeyReleased(evt);
             }
         });
-        jPanel4.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 180, 250, -1));
+        jPanel4.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 250, -1));
 
         buttonGroup1.add(rbMale);
         rbMale.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -234,7 +250,7 @@ public class Register_Page extends javax.swing.JFrame {
                 rbMaleKeyReleased(evt);
             }
         });
-        jPanel4.add(rbMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 217, -1, -1));
+        jPanel4.add(rbMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
 
         buttonGroup1.add(rbFemale);
         rbFemale.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -244,7 +260,7 @@ public class Register_Page extends javax.swing.JFrame {
                 rbFemaleKeyReleased(evt);
             }
         });
-        jPanel4.add(rbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 217, -1, -1));
+        jPanel4.add(rbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, -1, -1));
 
         buttonGroup1.add(rbOther);
         rbOther.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -254,15 +270,25 @@ public class Register_Page extends javax.swing.JFrame {
                 rbOtherKeyReleased(evt);
             }
         });
-        jPanel4.add(rbOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 217, -1, -1));
+        jPanel4.add(rbOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness - Copy.png"))); // NOI18N
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 370));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness133.png"))); // NOI18N
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1390, 770));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 510, 370));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness - Copy.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 450));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -332,6 +358,10 @@ validateFields();        // TODO add your handling code here:
     private void rbMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbMaleActionPerformed
+
+    private void txtFullnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFullnameActionPerformed
 
     /**
      * @param args the command line arguments

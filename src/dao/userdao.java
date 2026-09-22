@@ -32,4 +32,28 @@ public class userdao {
         }
         return users;
     }
+    
+    public static User getName(String email){
+        User users = null;
+        try{
+            ResultSet rs = DbOperations.getData("Select * from users where email = '" + email + "'");
+            
+            while(rs.next()){
+                users = new User();
+                users.setName(rs.getString("name"));
+//                users.setPassword(rs.getString("password"));
+                
+            }
+                    
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+        return users;
+    }
+    
+    public static void update(String email, String newPassword){
+        String query = "update user set password = '" + newPassword +"' where email = '" +email+"'";
+        DbOperations.setDataOrDelete(query, "Password Changed Successfully !"); 
+    }       
 }

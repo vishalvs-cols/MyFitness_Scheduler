@@ -68,7 +68,7 @@ public class Login_page extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Email");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 67, 77, 25));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 77, 25));
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,12 +80,12 @@ public class Login_page extends javax.swing.JFrame {
                 txtEmailKeyReleased(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 98, 316, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 316, 30));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Password");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 146, 64, 22));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 64, 22));
 
         btnlogin.setBackground(new java.awt.Color(153, 153, 255));
         btnlogin.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -96,13 +96,13 @@ public class Login_page extends javax.swing.JFrame {
                 btnloginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 261, -1, -1));
+        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MEMBER LOGIN");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 13, 200, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 200, -1));
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +114,7 @@ public class Login_page extends javax.swing.JFrame {
                 txtPasswordKeyReleased(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 174, 316, 30));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 316, 30));
 
         btnsignup.setBackground(new java.awt.Color(153, 153, 255));
         btnsignup.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -124,12 +124,17 @@ public class Login_page extends javax.swing.JFrame {
                 btnsignupActionPerformed(evt);
             }
         });
-        jPanel1.add(btnsignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 296, -1, -1));
+        jPanel1.add(btnsignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, -1, -1));
 
         btnForgetPassword.setBackground(new java.awt.Color(51, 204, 255));
         btnForgetPassword.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnForgetPassword.setText("Forget Password ?");
-        jPanel1.add(btnForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 266, -1, -1));
+        btnForgetPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnForgetPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, -1, -1));
 
         btnExit.setBackground(new java.awt.Color(255, 153, 153));
         btnExit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -139,22 +144,20 @@ public class Login_page extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, -1, -1));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness - Copy.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 450));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness133.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 780));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
         );
 
         pack();
@@ -178,7 +181,7 @@ s1.show();// TODO add your handling code here:
          String password = txtPassword.getText();
          User users = dao.userdao.LOGIN(email, password);
          if(users == null)
-             JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Passeord <b></html>","Message", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
          else{
              setVisible(false);
              new Main_Page(email,password).setVisible(true);
@@ -200,6 +203,11 @@ if(a == 0){
     private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
 validateFields();        // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordKeyReleased
+
+    private void btnForgetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetPasswordActionPerformed
+    ForgetPassword s1 = new ForgetPassword();
+    s1.show();// TODO add your handling code here:
+    }//GEN-LAST:event_btnForgetPasswordActionPerformed
 
     /**
      * @param args the command line arguments
