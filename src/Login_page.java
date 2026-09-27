@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 import model.User;
+import model.Admin;
 import javax.swing.JOptionPane;
 import sun.java2d.pipe.ValidatePipe;
 /**
@@ -179,13 +180,21 @@ s1.show();// TODO add your handling code here:
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
          String email = txtEmail.getText();
          String password = txtPassword.getText();
-         User users = dao.userdao.LOGIN(email, password);
-         if(users == null)
-             JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
-         else{
+         Admin admin = dao.admindao.LOGIN(email,password);
+         if(admin != null){
              setVisible(false);
-             new Main_Page(email,password).setVisible(true);
+             new Main_Page(email, password).setVisible(true);
              this.dispose();
+         }
+         else{
+            User users = dao.userdao.LOGIN(email, password);
+            if(users == null )
+                JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
+            else{
+                setVisible(false);
+                new Main_Page(email,password).setVisible(true);
+                this.dispose();
+            }
          }
     }//GEN-LAST:event_btnloginActionPerformed
 

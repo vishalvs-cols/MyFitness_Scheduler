@@ -313,7 +313,8 @@ users.setPassword(txtpassword.getText());
 users.setGender(txtGender.getText());
 userdao.REGISTER(users);
 RESET();
-
+Login_page s1 = new Login_page();
+s1.show();
 if(users == null){
     JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Fill All Details <b></html>","Message", JOptionPane.ERROR_MESSAGE);
 }else {
