@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +12,8 @@
  * @author visha
  */
 public class Main_Page extends javax.swing.JFrame {
+    public String email;
+    
 
     /**
      * Creates new form Main_Page
@@ -16,12 +21,18 @@ public class Main_Page extends javax.swing.JFrame {
     public Main_Page() {
         initComponents();
     }
-    public String userEmail;
-    public String userPassword;
-    public Main_Page(String email,String password){
+   
+    
+    public Main_Page(String userEmail){
         initComponents();
-        this.userEmail = email;
-        this.userPassword = password;
+        email = userEmail;
+        if(!email.equals("vishal2405.mcmt@gmail.com")){
+            btnViewEditDelete.setVisible(false);
+            btnManage.setVisible(false);
+            btnNewWorkout.setVisible(false);
+            btnGetStart.setVisible(false);
+        }
+        
     }
 
     /**
@@ -33,114 +44,169 @@ public class Main_Page extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        btnGetStart = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnHome = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        btnWorkout = new javax.swing.JButton();
+        btnSchedule = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnViewEditDelete = new javax.swing.JButton();
+        btnManage = new javax.swing.JButton();
+        btnNewWorkout = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnGetStart = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1369, 618));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Workout Schedule");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Progress Report");
+        btnHome.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnHome.setText("HOME");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("MyFitness");
-        jLabel6.setAlignmentY(0.0F);
-        jLabel6.setIconTextGap(2);
+        btnExit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exit small.png"))); // NOI18N
+        btnExit.setText("EXIT");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 204, 0));
-        jLabel7.setText("Scheduler");
-        jLabel7.setAlignmentY(0.0F);
-        jLabel7.setIconTextGap(2);
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logout.png"))); // NOI18N
+        btnLogout.setText("LOGOUT");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\visha\\Downloads\\1000082986 - Copy.png")); // NOI18N
-        jLabel10.setText("jLabel10");
-        jLabel10.setIconTextGap(2);
+        btnWorkout.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnWorkout.setText("WORKOUTS");
+        btnWorkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWorkoutActionPerformed(evt);
+            }
+        });
 
+        btnSchedule.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnSchedule.setText("SCHEDULE");
+        btnSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScheduleActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnUpdate.setText("UPDATE PROFILE");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(178, 178, 178)
+                .addComponent(btnHome)
+                .addGap(48, 48, 48)
+                .addComponent(btnWorkout)
+                .addGap(81, 81, 81)
+                .addComponent(btnSchedule)
+                .addGap(40, 40, 40)
+                .addComponent(btnUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addComponent(btnExit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLogout)
+                .addGap(25, 25, 25))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHome)
+                    .addComponent(btnExit)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnWorkout)
+                    .addComponent(btnSchedule)
+                    .addComponent(btnUpdate))
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, -1));
+
+        btnViewEditDelete.setBackground(new java.awt.Color(255, 102, 102));
+        btnViewEditDelete.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnViewEditDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/view edit delete product.png"))); // NOI18N
+        btnViewEditDelete.setText("VIEW,EDIT & DELETE");
+        btnViewEditDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewEditDeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnViewEditDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 620, -1, 26));
+
+        btnManage.setBackground(new java.awt.Color(255, 102, 102));
+        btnManage.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnManage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/category.png"))); // NOI18N
+        btnManage.setText("MANAGE WORKOUTS");
+        btnManage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, -1, 26));
+
+        btnNewWorkout.setBackground(new java.awt.Color(255, 153, 153));
+        btnNewWorkout.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnNewWorkout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/new product.png"))); // NOI18N
+        btnNewWorkout.setText("NEW WORKOUTS");
+        getContentPane().add(btnNewWorkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 620, -1, 26));
+
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 51));
+        jLabel3.setText("REDFINE YOUR ROUTINE      CULTIVATE STRENGTH        ACHIEVE YOUR GOALS");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 633, -1));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel2.setText("Your Fitness ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        jLabel6.setText("Journey, ");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 51));
+        jLabel4.setText("Simplified");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+
+        btnGetStart.setBackground(new java.awt.Color(0, 153, 51));
+        btnGetStart.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnGetStart.setForeground(new java.awt.Color(255, 255, 255));
         btnGetStart.setText("Get Started   --> -->");
         btnGetStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGetStartActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGetStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("HOME");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(56, 56, 56)))
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204)
-                .addComponent(btnGetStart)
-                .addGap(151, 151, 151))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(btnGetStart)))
-                    .addComponent(jLabel10))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1366, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 664, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/HomePage Image.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,6 +215,37 @@ public class Main_Page extends javax.swing.JFrame {
 GetStarted s1 = new GetStarted();
 s1.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnGetStartActionPerformed
+
+    private void btnWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnWorkoutActionPerformed
+
+    private void btnViewEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEditDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewEditDeleteActionPerformed
+
+    private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManageActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to Logout", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            setVisible(false);
+            new Login_page().setVisible(true);
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnScheduleActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to Close Application", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            System.exit(0);
+        }// TODO add your  // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,13 +283,22 @@ s1.show();// TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGetStart;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnManage;
+    private javax.swing.JButton btnNewWorkout;
+    private javax.swing.JButton btnSchedule;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnViewEditDelete;
+    private javax.swing.JButton btnWorkout;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -183,7 +183,7 @@ s1.show();// TODO add your handling code here:
          Admin admin = dao.admindao.LOGIN(email,password);
          if(admin != null){
              setVisible(false);
-             new Main_Page(email, password).setVisible(true);
+             new Main_Page(email).setVisible(true);
              this.dispose();
          }
          else{
@@ -192,7 +192,7 @@ s1.show();// TODO add your handling code here:
                 JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
             else{
                 setVisible(false);
-                new Main_Page(email,password).setVisible(true);
+                new Main_Page(email).setVisible(true);
                 this.dispose();
             }
          }
