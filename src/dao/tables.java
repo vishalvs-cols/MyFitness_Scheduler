@@ -22,8 +22,10 @@ public class tables {
             String adminDetails = "INSERT INTO admin (admin_id, name, email, password) values (1, 'Vishal Singh', 'vishal2405.mcmt@gmail.com', 'admin123')ON CONFLICT (admin_id) DO NOTHING";   
             st.executeUpdate(userTable);
             st.executeUpdate(adminDetails);
-            javax.swing.JOptionPane.showMessageDialog(null, "Table Created Successfully");
-            javax.swing.JOptionPane.showMessageDialog(null, "Admin Added Successfully");
+            DbOperations.setDataOrDelete(userTable,"User Table Created Successfuslly");
+            DbOperations.setDataOrDelete(adminDetails,"Admin Details Added Successfully");
+//            javax.swing.JOptionPane.showMessageDialog(null, "Table Created Successfully");
+//            javax.swing.JOptionPane.showMessageDialog(null, "Admin Added Successfully");
 //            String query = "INSERT INTO users(name, email, password,confirm password, age, gender) VALUES ('"+user.getFull_Name()+"', '"+user.getEmail()+"', '"+user.getPassword()+"', '"+user.getConfirm_Password()+"', '"+user.getAge()+"','"+user.getGender()+"','false') ";
 //            DbOperations.setDataOrDelete(query, "Register Successfully !");
         }

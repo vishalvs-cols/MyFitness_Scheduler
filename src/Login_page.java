@@ -12,13 +12,14 @@ import sun.java2d.pipe.ValidatePipe;
  * @author visha
  */
 public class Login_page extends javax.swing.JFrame {
-    public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
+    public String emailPattern = "^[a-zA-Z0-9.]+[@]+[a-zA-Z0-9.]+[.]+[a-zA-Z0-9]+$";
     /**
      * Creates new form Login_page
      */
     public Login_page() {
         initComponents();
         btnlogin.setEnabled(false);
+   
     }
    
     
@@ -137,15 +138,15 @@ public class Login_page extends javax.swing.JFrame {
         });
         jPanel1.add(btnForgetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, -1, -1));
 
-        btnExit.setBackground(new java.awt.Color(255, 153, 153));
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        btnExit.setText("EXIT");
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, -1, -1));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1283, 30, 50, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness133.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 780));
@@ -180,22 +181,33 @@ s1.show();// TODO add your handling code here:
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
          String email = txtEmail.getText();
          String password = txtPassword.getText();
-         Admin admin = dao.admindao.LOGIN(email,password);
-         if(admin != null){
-             setVisible(false);
-             new Main_Page(email).setVisible(true);
-             this.dispose();
+         
+         if(email.isEmpty() || password.isEmpty()){
+             JOptionPane.showMessageDialog(this,"Fill all the field before Login.","Missing Information",JOptionPane.WARNING_MESSAGE);
          }
-         else{
-            User users = dao.userdao.LOGIN(email, password);
-            if(users == null )
-                JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
-            else{
+         try{
+            Admin admin = dao.admindao.LOGIN(email,password);
+            if(admin != null){
                 setVisible(false);
                 new Main_Page(email).setVisible(true);
                 this.dispose();
             }
-         }
+            else{
+               User users = dao.userdao.LOGIN(email, password);
+               if(users == null )
+                   JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
+               else{
+                   setVisible(false);
+                   new Main_Page(email).setVisible(true);
+                   this.dispose();
+               }
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Database Connection Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
