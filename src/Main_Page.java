@@ -6,14 +6,13 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author visha
  */
 public class Main_Page extends javax.swing.JFrame {
+
     public String email;
-    
 
     /**
      * Creates new form Main_Page
@@ -21,18 +20,18 @@ public class Main_Page extends javax.swing.JFrame {
     public Main_Page() {
         initComponents();
     }
-   
-    
-    public Main_Page(String userEmail){
+
+    public Main_Page(String userEmail) {
         initComponents();
         email = userEmail;
-        if(!email.equals("vishal2405.mcmt@gmail.com")){
+        if (!email.equals("vishal2405.mcmt@gmail.com")) {
             btnViewEditDelete.setVisible(false);
             btnManage.setVisible(false);
             btnNewWorkout.setVisible(false);
             btnGetStart.setVisible(false);
+            btnVerifyUser.setVisible(false);
         }
-        
+
     }
 
     /**
@@ -60,7 +59,9 @@ public class Main_Page extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnGetStart = new javax.swing.JButton();
+        btnVerifyUser = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -157,7 +158,7 @@ public class Main_Page extends javax.swing.JFrame {
                 btnViewEditDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnViewEditDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 620, -1, 26));
+        getContentPane().add(btnViewEditDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 650, -1, 26));
 
         btnManage.setBackground(new java.awt.Color(255, 102, 102));
         btnManage.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -168,13 +169,18 @@ public class Main_Page extends javax.swing.JFrame {
                 btnManageActionPerformed(evt);
             }
         });
-        getContentPane().add(btnManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, -1, 26));
+        getContentPane().add(btnManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 650, -1, 26));
 
         btnNewWorkout.setBackground(new java.awt.Color(255, 153, 153));
         btnNewWorkout.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnNewWorkout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/new product.png"))); // NOI18N
         btnNewWorkout.setText("NEW WORKOUTS");
-        getContentPane().add(btnNewWorkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 620, -1, 26));
+        btnNewWorkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewWorkoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNewWorkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 650, -1, 26));
 
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 51));
@@ -205,15 +211,27 @@ public class Main_Page extends javax.swing.JFrame {
         });
         getContentPane().add(btnGetStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/HomePage Image.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
+        btnVerifyUser.setBackground(new java.awt.Color(255, 102, 102));
+        btnVerifyUser.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnVerifyUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/verify users.png"))); // NOI18N
+        btnVerifyUser.setText("VERIFY USERS");
+        btnVerifyUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerifyUserActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVerifyUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(972, 650, -1, 26));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 106, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HomePage Image.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 70, 1410, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetStartActionPerformed
-GetStarted s1 = new GetStarted();
-s1.show();// TODO add your handling code here:
+        GetStarted s1 = new GetStarted();
+        s1.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnGetStartActionPerformed
 
     private void btnWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkoutActionPerformed
@@ -221,11 +239,13 @@ s1.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnWorkoutActionPerformed
 
     private void btnViewEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEditDeleteActionPerformed
-        // TODO add your handling code here:
+ViewEditDelete ved = new ViewEditDelete();
+ved.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnViewEditDeleteActionPerformed
 
     private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
-        // TODO add your handling code here:
+        ManageWorkout mw = new ManageWorkout();
+        mw.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnManageActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -246,6 +266,16 @@ s1.show();// TODO add your handling code here:
             System.exit(0);
         }// TODO add your  // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnNewWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewWorkoutActionPerformed
+AddNewExercise an = new AddNewExercise();
+an.show();// TODO add your handling code here:
+    }//GEN-LAST:event_btnNewWorkoutActionPerformed
+
+    private void btnVerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUserActionPerformed
+VerifyUsers vu = new VerifyUsers();
+vu.show();// TODO add your handling code here:
+    }//GEN-LAST:event_btnVerifyUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +321,7 @@ s1.show();// TODO add your handling code here:
     private javax.swing.JButton btnNewWorkout;
     private javax.swing.JButton btnSchedule;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnVerifyUser;
     private javax.swing.JButton btnViewEditDelete;
     private javax.swing.JButton btnWorkout;
     private javax.swing.JLabel jLabel1;
@@ -299,6 +330,7 @@ s1.show();// TODO add your handling code here:
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,41 +10,36 @@ package model;
  * @author visha
  */
 public class Workout {
-    private int excercise_id;
-    private String excercise_name;
-    private String category;
-    private String reps;
+    private int id;
+    private String name;
+  
 
-    public int getExcercise_id() {
-        return excercise_id;
+    public int getid() {
+        return id;
     }
 
-    public void setExcercise_id(int excercise_id) {
-        this.excercise_id = excercise_id;
+    public void setid(int id) {
+        this.id = id;
     }
 
-    public String getExcercise_name() {
-        return excercise_name;
+    public String getname() {
+        return name;
     }
 
-    public void setExcercise_name(String excercise_name) {
-        this.excercise_name = excercise_name;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public String getCategory() {
-        return category;
-    }
+  //To change body of generated methods, choose Tools | Templates.
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+//To change body of generated methods, choose Tools | Templates.
 
-    public String getReps() {
-        return reps;
-    }
+ 
+ 
+   
 
-    public void setReps(String reps) {
-        this.reps = reps;
-    }
+ 
+
+
     
 }
