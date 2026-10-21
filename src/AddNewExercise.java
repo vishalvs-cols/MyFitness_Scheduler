@@ -23,6 +23,7 @@ public class AddNewExercise extends javax.swing.JFrame {
     public AddNewExercise() {
         initComponents();
         btnSave.setEnabled(false);
+
     }
 
     public void ValidateFields() {

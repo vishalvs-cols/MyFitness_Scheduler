@@ -235,7 +235,9 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetStartActionPerformed
 
     private void btnWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkoutActionPerformed
-        // TODO add your handling code here:
+setVisible(false);
+new GenerateWorkout(email).setVisible(true);
+// TODO add your handling code here:
     }//GEN-LAST:event_btnWorkoutActionPerformed
 
     private void btnViewEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEditDeleteActionPerformed

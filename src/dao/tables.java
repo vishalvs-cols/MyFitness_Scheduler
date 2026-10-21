@@ -20,10 +20,12 @@ public class tables {
             
             String userTable  = "CREATE TABLE IF NOT EXISTS users(" + "id SERIAL PRIMARY KEY," + "name VARCHAR(200)," + "email VARCHAR(250)," + "password VARCHAR(100)," + "age int," + "gender VARCHAR(100))"; 
             String adminDetails = "INSERT INTO admin (admin_id, name, email, password) values (1, 'Vishal Singh', 'vishal2405.mcmt@gmail.com', 'admin123')ON CONFLICT (admin_id) DO NOTHING";   
-            st.executeUpdate(userTable);
-            st.executeUpdate(adminDetails);
-            DbOperations.setDataOrDelete(userTable,"User Table Created Successfuslly");
-            DbOperations.setDataOrDelete(adminDetails,"Admin Details Added Successfully");
+            String GenerateWorkout = "Create Table IF Not Exists workout(" + "workout_id int primary key ," + "name varchar(200)," + "email varchar(200)," + "workout_date date," + "createdBy Varchar(200))";
+//            st.executeUpdate(userTable);
+//            st.executeUpdate(adminDetails);
+            DbOperations.setDataOrDelete(GenerateWorkout, "Workout Table Created Successfully");
+//            DbOperations.setDataOrDelete(userTable,"User Table Created Successfuslly");
+//            DbOperations.setDataOrDelete(adminDetails,"Admin Details Added Successfully");
 //            javax.swing.JOptionPane.showMessageDialog(null, "Table Created Successfully");
 //            javax.swing.JOptionPane.showMessageDialog(null, "Admin Added Successfully");
 //            String query = "INSERT INTO users(name, email, password,confirm password, age, gender) VALUES ('"+user.getFull_Name()+"', '"+user.getEmail()+"', '"+user.getPassword()+"', '"+user.getConfirm_Password()+"', '"+user.getAge()+"','"+user.getGender()+"','false') ";

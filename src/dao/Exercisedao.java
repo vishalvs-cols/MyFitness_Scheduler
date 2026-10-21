@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package dao;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Exercise;
@@ -14,38 +15,80 @@ import java.sql.*;
  * @author visha
  */
 public class Exercisedao {
-    public static void SAVE(Exercise addexercise){
-        String query = "INSERT INTO addexercise(name, category, setsreps) values ('"+addexercise.getName()+"','"+addexercise.getCategory()+"','"+addexercise.getSetsReps()+"')";
+
+    public static void SAVE(Exercise addexercise) {
+        String query = "INSERT INTO addexercise(name, category, setsreps) values ('" + addexercise.getName() + "','" + addexercise.getCategory() + "','" + addexercise.getSetsReps() + "')";
         DbOperations.setDataOrDelete(query, "Exercise Added Successfully");
     }
-    
-    public static ArrayList<Exercise> getAllRecords(){
+
+    public static ArrayList<Exercise> getAllRecords() {
         ArrayList<Exercise> arraylist = new ArrayList<>();
-        try{
-           ResultSet rs =  DbOperations.getData("select *from addexercise");
-           while(rs.next()){
-               Exercise addexercise = new Exercise();
-               addexercise.setId(rs.getInt("id"));
-               addexercise.setName(rs.getString("name"));
-               addexercise.setCategory(rs.getString("category"));
-               addexercise.setSetsReps(rs.getString("setsreps"));
-               arraylist.add(addexercise);
-           }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        try {
+            ResultSet rs = DbOperations.getData("select *from addexercise");
+            while (rs.next()) {
+                Exercise addexercise = new Exercise();
+                addexercise.setId(rs.getInt("id"));
+                addexercise.setName(rs.getString("name"));
+                addexercise.setCategory(rs.getString("category"));
+                addexercise.setSetsReps(rs.getString("setsreps"));
+                arraylist.add(addexercise);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
         return arraylist;
     }
-    
-    public static void UPDATE(Exercise addexercise){
-        String query = "Update addexercise set name = '"+addexercise.getName()+"',category = '"+addexercise.getCategory()+"',setsreps = '"+addexercise.getSetsReps()+"' where id = '"+addexercise.getId()+"'";
+
+    public static void UPDATE(Exercise addexercise) {
+        String query = "Update addexercise set name = '" + addexercise.getName() + "',category = '" + addexercise.getCategory() + "',setsreps = '" + addexercise.getSetsReps() + "' where id = '" + addexercise.getId() + "'";
         DbOperations.setDataOrDelete(query, "Exercise Update Successfully");
     }
-    
-    public static void DELETE(String id){
-        String query = "Delete from addexercise where id = '"+id+"'";
+
+    public static void DELETE(String id) {
+        String query = "Delete from addexercise where id = '" + id + "'";
         DbOperations.setDataOrDelete(query, "Exercise Deleted Successfully");
     }
-        
+
+    public static ArrayList<Exercise> getAllRecordsByCategory(String category) {
+        ArrayList<Exercise> arraylist = new ArrayList<>();
+        try {
+            // Fetches 5 random exercises from addexercise for the selected category
+            String query = "SELECT * FROM addexercise WHERE category = '" + category + "' ORDER BY RANDOM() LIMIT 5";
+            ResultSet rs = DbOperations.getData(query);
+
+            while (rs.next()) {
+                Exercise addexercise = new Exercise();
+                addexercise.setId(rs.getInt("id"));
+                addexercise.setName(rs.getString("name"));
+                addexercise.setCategory(rs.getString("category"));
+                addexercise.setSetsReps(rs.getString("setsreps"));
+                arraylist.add(addexercise);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return arraylist;
+    }
+        public static ArrayList<Exercise> filterExerciseByname(String name, String category) {
+        ArrayList<Exercise> arraylist = new ArrayList<>();
+        try {
+            // Fetches 5 random exercises from addexercise for the selected category
+            String query = "SELECT * FROM addexercise WHERE name like '%"+name+"%' and category = '" + category + "'";
+            ResultSet rs = DbOperations.getData(query);
+
+            while (rs.next()) {
+                Exercise addexercise = new Exercise();
+                addexercise.setId(rs.getInt("id"));
+                addexercise.setName(rs.getString("name"));
+                addexercise.setCategory(rs.getString("category"));
+                addexercise.setSetsReps(rs.getString("setsreps"));
+                arraylist.add(addexercise);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return arraylist;
+    }
+
+ 
 }

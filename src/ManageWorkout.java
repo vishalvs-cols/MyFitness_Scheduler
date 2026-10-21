@@ -22,6 +22,7 @@ public class ManageWorkout extends javax.swing.JFrame {
     public ManageWorkout() {
         initComponents();
         btnSave.setEnabled(false);
+  
     }
     
     public void ValidateFields(){
