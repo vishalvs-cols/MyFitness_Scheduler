@@ -40,9 +40,4 @@ public class WorkoutDao {
         String query = "delete from exercisecategory where id='" +id+ "'";
         DbOperations.setDataOrDelete(query, "Excercise Deleted Successfully");
     }
-
-    public static void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

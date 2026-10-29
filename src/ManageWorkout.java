@@ -197,7 +197,7 @@ while(itr.hasNext()){
         String name = model.getValueAt(index, 1).toString();
         int a = JOptionPane.showConfirmDialog(null,"Do You Want to Delete "+name+" Workout", "Select", JOptionPane.YES_NO_OPTION);
         if(a == 0){
-            WorkoutDao.delete(id);
+            WorkoutDao.Delete(id);
             setVisible(false);
             new ManageWorkout().setVisible(true);
         }

@@ -36,26 +36,27 @@ public class GenerateWorkout extends javax.swing.JFrame {
 
     }
 
-    public void exerciseNameByCategory(String category) {
+    private void fillTable(java.util.List<Exercise> list) {
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
-        ArrayList<Exercise> list = Exercisedao.getAllRecordsByCategory(category);
-        Iterator<Exercise> itr = list.iterator();
-        while (itr.hasNext()) {
-            Exercise exerciseObj = itr.next();
-            dtm.addRow(new Object[]{exerciseObj.getName()});
+        for (Exercise ex : list) {
+            dtm.addRow(new Object[]{
+                ex.getId(), ex.getName(), ex.getCategory(), ex.getSetsReps()
+            });
         }
     }
 
-    public void filterExerciseByname(String name, String category) {
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        dtm.setRowCount(0);
-        ArrayList<Exercise> list = Exercisedao.filterExerciseByname(name, category);
-        Iterator<Exercise> itr = list.iterator();
-        while (itr.hasNext()) {
-            Exercise exerciseObj = itr.next();
-            dtm.addRow(new Object[]{exerciseObj.getName()});
+    public void exerciseNameByCategory(String category) {
+        if (category == null) {
+            return;
         }
+        ArrayList<Exercise> list = Exercisedao.getAllRecordsByCategory(category);
+        java.util.Collections.shuffle(list);
+        fillTable(list.subList(0, Math.min(6, list.size())));;
+    }
+
+    public void filterExerciseByname(String name, String category) {
+        fillTable(Exercisedao.filterExerciseByname(name, category));
     }
 
     public void ValidateFields() {
@@ -84,16 +85,12 @@ public class GenerateWorkout extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtComboBox = new javax.swing.JComboBox<>();
         btnGenerate = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,7 +118,7 @@ public class GenerateWorkout extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Category");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
         txtComboBox.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtComboBox.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -129,12 +126,17 @@ public class GenerateWorkout extends javax.swing.JFrame {
                 txtComboBoxComponentShown(evt);
             }
         });
+        txtComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtComboBoxActionPerformed(evt);
+            }
+        });
         txtComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtComboBoxKeyReleased(evt);
             }
         });
-        getContentPane().add(txtComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 310, -1));
+        getContentPane().add(txtComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 310, -1));
 
         btnGenerate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnGenerate.setText("Generate Workouts");
@@ -143,25 +145,7 @@ public class GenerateWorkout extends javax.swing.JFrame {
                 btnGenerateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 630, -1, -1));
-
-        jTable1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name"
-            }
-        ));
-        jTable1.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jTable1ComponentShown(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 250, 340));
+        getContentPane().add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 650, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
@@ -179,21 +163,7 @@ public class GenerateWorkout extends javax.swing.JFrame {
         txtEmail.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 285, 250, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel5.setText("Search");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, 30));
-
-        txtSearch.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        txtSearch.setForeground(new java.awt.Color(255, 0, 0));
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 310, -1));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -201,19 +171,15 @@ public class GenerateWorkout extends javax.swing.JFrame {
                 "ID", "Name", "Category", "Sets Reps"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home-background-image.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTable1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTable1ComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1ComponentShown
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         setVisible(false);
@@ -275,11 +241,12 @@ public class GenerateWorkout extends javax.swing.JFrame {
         exerciseNameByCategory(category);
     }//GEN-LAST:event_formComponentShown
 
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        String name = txtSearch.getText();
-        String category = (String) txtComboBox.getSelectedItem();
-        filterExerciseByname(name, category);// TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchKeyReleased
+    private void txtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComboBoxActionPerformed
+        Object se1 = txtComboBox.getSelectedItem();
+        if (se1 != null) {
+            exerciseNameByCategory(se1.toString());
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_txtComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,16 +259,12 @@ public class GenerateWorkout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<String> txtComboBox;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
 }
