@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Exercise;
 import model.Workout;
-
+import dao.ScheduleDao;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,8 +31,11 @@ public class GenerateWorkout extends javax.swing.JFrame {
 
     public GenerateWorkout(String email) {
         initComponents();
-        btnGenerate.setEnabled(false);
         userEmail = email;
+        txtEmail.setText(email);
+        txtEmail.setEditable(false);
+        btnGenerate.setEnabled(false);
+        
 
     }
 
@@ -60,15 +63,11 @@ public class GenerateWorkout extends javax.swing.JFrame {
     }
 
     public void ValidateFields() {
-        String name = txtName.getText();
-        String email = txtEmail.getText();
-        String category = (String) txtComboBox.getSelectedItem();
-
-        if (!name.equals("") && !email.equals("") && !category.equals("") && email.matches(emailPattern)) {
-            btnGenerate.setEnabled(true);
-        } else {
-            btnGenerate.setEnabled(false);
-        }
+        String email = txtEmail.getText().trim();
+        Object cat = txtComboBox.getSelectedItem();
+        
+        boolean ok = email.matches(emailPattern) && cat != null;
+        btnGenerate.setEnabled(ok);
     }
 
     /**
@@ -198,32 +197,25 @@ public class GenerateWorkout extends javax.swing.JFrame {
     }//GEN-LAST:event_txtComboBoxComponentShown
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
-        Object selectedItem = txtComboBox.getSelectedItem();
-        if (selectedItem == null || selectedItem.toString().equals("-- Select Category --")) {
-            JOptionPane.showMessageDialog(this, "Please select a category first!");
-            return;
-        }
-
-        String category = selectedItem.toString().trim();
-
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        dtm.setRowCount(0);
-
-        ArrayList<Exercise> exercises = Exercisedao.getAllRecordsByCategory(category);
-
-        if (exercises.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No exercises found for " + category + " in addexercise table.");
-            return;
-        }
-
-        for (Exercise addexercise : exercises) {
-            dtm.addRow(new Object[]{
-                addexercise.getId(),
-                addexercise.getName(),
-                addexercise.getCategory(),
-                addexercise.getSetsReps()
-            });
-        }        // TODO add your handling code here:
+      DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+      if(dtm.getRowCount()== 0){
+          JOptionPane.showMessageDialog(this, "Please Select Exercise Category for the day !");
+          return;
+      }
+      ArrayList<Integer> ids = new ArrayList<>();
+      for(int i = 0; i<dtm.getRowCount(); i++){
+          ids.add((Integer) dtm.getValueAt(i, 0));
+      }
+      boolean saved = ScheduleDao.Save(userEmail, ids);
+      if(saved){
+          JOptionPane.showMessageDialog(this, "Your Workout Saved Successfully");
+          new Schedule(userEmail).setVisible(true);
+          dispose();
+      }
+      else{
+          JOptionPane.showMessageDialog(this, "Workout does not Saved");
+          
+      }
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void txtComboBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComboBoxKeyReleased
@@ -239,6 +231,7 @@ public class GenerateWorkout extends javax.swing.JFrame {
         }// TODO add your handling code here:
         String category = (String) txtComboBox.getSelectedItem();
         exerciseNameByCategory(category);
+        ValidateFields();
     }//GEN-LAST:event_formComponentShown
 
     private void txtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComboBoxActionPerformed

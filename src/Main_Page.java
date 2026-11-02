@@ -110,6 +110,11 @@ public class Main_Page extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnUpdate.setText("UPDATE PROFILE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,7 +264,8 @@ ved.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
-        // TODO add your handling code here:
+        new Schedule(email).setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnScheduleActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -278,6 +284,11 @@ an.show();// TODO add your handling code here:
 VerifyUsers vu = new VerifyUsers();
 vu.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnVerifyUserActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+UpdateProfile up = new UpdateProfile();
+up.show();// TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
