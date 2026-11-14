@@ -6,13 +6,15 @@
 import model.User;
 import dao.userdao;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author visha
  */
 public class Register_Page extends javax.swing.JFrame {
-    
+
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
+
     /**
      * Creates new form Register_Page
      */
@@ -21,59 +23,56 @@ public class Register_Page extends javax.swing.JFrame {
         btnRegister.setEnabled(false);
 //        txtGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Male", "Female", "Other"}));
     }
-    public void RESET(){
+
+    public void RESET() {
         txtFullname.setText("");
         txtage.setText("");
         txtemail.setText("");
         txtpassword.setText("");
         String gender = " ";
-        if(rbMale.isSelected()){
+        if (rbMale.isSelected()) {
             gender = "Male";
-        }
-        else if(rbFemale.isSelected()){
+        } else if (rbFemale.isSelected()) {
             gender = "Female";
-        }
-        else{
+        } else {                                                                                                                                                                                                                                
             gender = "Other";
         }
-        
+
         btnRegister.setEnabled(false);
     }
-    public void validateFields(){
+
+    public void validateFields() {
         String name = txtFullname.getText();
         String age = txtage.getText();
         String email = txtemail.getText();
         String password = txtpassword.getText();
         String gender = " ";
-        if(rbMale.isSelected()){
+        if (rbMale.isSelected()) {
             gender = "Male";
-        }
-        else if(rbFemale.isSelected()){
+        } else if (rbFemale.isSelected()) {
             gender = "Female";
-        }
-        else{
+        } else {
             gender = "Other";
         }
-        
+
         System.out.println("Fill All Details");
         System.out.println("Name empty" + name.equals(""));
         System.out.println("age empty" + age.equals(""));
         System.out.println("email empty" + email.equals(""));
         System.out.println("password empty" + password.equals(""));
-        if(!name.equals("") && email.matches(emailPattern) && !password.equals("")){
+        if (!name.equals("") && email.matches(emailPattern) && !password.equals("")) {
             btnRegister.setEnabled(true);
-        }
-        else{
+        } else {
             btnRegister.setEnabled(false);
         }
-        
+
 //        if(name.isEmpty() || email.isEmpty() || password.isEmpty() || gender.isEmpty() || age <= 0){
 //            JOptionPane.showMessageDialog(this, "All Field are Required");
 //            return;
 //        }
 //        
-        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,18 +109,16 @@ public class Register_Page extends javax.swing.JFrame {
         rbFemale = new javax.swing.JRadioButton();
         rbOther = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness - Copy.png"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(1366, 768));
         jLabel2.setMinimumSize(new java.awt.Dimension(1366, 768));
         jLabel2.setName(""); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(1366, 768));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1368, 766));
         setMinimumSize(new java.awt.Dimension(1368, 766));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1368, 766));
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 2, true));
@@ -272,18 +269,18 @@ public class Register_Page extends javax.swing.JFrame {
         });
         jPanel4.add(rbOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness133.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/getStartedBG.png"))); // NOI18N
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1390, 770));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 760));
+
+        jLabel3.setText("jLabel3");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,66 +291,67 @@ public class Register_Page extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to close Apllication ", "Select", JOptionPane.YES_NO_OPTION);
-if(a == 0)
-    System.exit(0);        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to close Apllication ", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            System.exit(0);    
+        }// TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-Login_page s1 = new Login_page();
-s1.show();// TODO add your handling code here:
+        Login_page s1 = new Login_page();
+        s1.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-User users = new User();
-users.setName(txtFullname.getText());
-users.setAge(Integer.parseInt(txtage.getText()));
-users.setEmail(txtemail.getText());
-users.setPassword(txtpassword.getText());
-users.setGender(txtGender.getText());
-userdao.REGISTER(users);
-RESET();
-Login_page s1 = new Login_page();
-s1.show();
-if(users == null){
-    JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Fill All Details <b></html>","Message", JOptionPane.ERROR_MESSAGE);
-}else {
-    setVisible(false);
-    
-}
+        User users = new User();
+        users.setName(txtFullname.getText());
+        users.setAge(Integer.parseInt(txtage.getText()));
+        users.setEmail(txtemail.getText());
+        users.setPassword(txtpassword.getText());
+        users.setGender(txtGender.getText());
+        userdao.REGISTER(users);
+        RESET();
+        Login_page s1 = new Login_page();
+        s1.show();
+        if (users == null) {
+            JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Fill All Details <b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+        } else {
+            setVisible(false);
+
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-RESET();        // TODO add your handling code here:
+        RESET();        // TODO add your handling code here:
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void txtFullnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFullnameKeyReleased
-validateFields();        // TODO add your handling code here:
+        validateFields();        // TODO add your handling code here:
     }//GEN-LAST:event_txtFullnameKeyReleased
 
     private void txtageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtageKeyReleased
-validateFields();        // TODO add your handling code here:
+        validateFields();        // TODO add your handling code here:
     }//GEN-LAST:event_txtageKeyReleased
 
     private void txtemailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyReleased
-  validateFields();      // TODO add your handling code here:
+        validateFields();      // TODO add your handling code here:
     }//GEN-LAST:event_txtemailKeyReleased
 
     private void txtpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyReleased
-     validateFields();   // TODO add your handling code here:
+        validateFields();   // TODO add your handling code here:
     }//GEN-LAST:event_txtpasswordKeyReleased
 
     private void rbMaleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbMaleKeyReleased
-       validateFields(); // TODO add your handling code here:
+        validateFields(); // TODO add your handling code here:
     }//GEN-LAST:event_rbMaleKeyReleased
 
     private void rbFemaleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbFemaleKeyReleased
-     validateFields(); // TODO add your handling code here:
+        validateFields(); // TODO add your handling code here:
     }//GEN-LAST:event_rbFemaleKeyReleased
 
     private void rbOtherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbOtherKeyReleased
-    validateFields();   // TODO add your handling code here:
+        validateFields();   // TODO add your handling code here:
     }//GEN-LAST:event_rbOtherKeyReleased
 
     private void rbMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMaleActionPerformed
@@ -414,6 +412,7 @@ validateFields();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton rbFemale;
     private javax.swing.JRadioButton rbMale;

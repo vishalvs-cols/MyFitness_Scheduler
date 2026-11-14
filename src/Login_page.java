@@ -7,35 +7,35 @@ import model.User;
 import model.Admin;
 import javax.swing.JOptionPane;
 import sun.java2d.pipe.ValidatePipe;
+
 /**
  *
  * @author visha
  */
 public class Login_page extends javax.swing.JFrame {
+
     public String emailPattern = "^[a-zA-Z0-9.]+[@]+[a-zA-Z0-9.]+[.]+[a-zA-Z0-9]+$";
+
     /**
      * Creates new form Login_page
      */
     public Login_page() {
         initComponents();
         btnlogin.setEnabled(false);
-   
+
     }
-   
-    
-    public void validateFields(){
+
+    public void validateFields() {
         String Email = txtEmail.getText();
         String Password = txtPassword.getText();
-        
-        if(Email.matches(emailPattern) && !Password.equals("")){
+
+        if (Email.matches(emailPattern) && !Password.equals("")) {
             btnlogin.setEnabled(true);
-          
-        }
-        else{
+
+        } else {
             btnlogin.setEnabled(false);
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +56,7 @@ public class Login_page extends javax.swing.JFrame {
         btnsignup = new javax.swing.JButton();
         btnForgetPassword = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 102, 255));
@@ -148,8 +148,8 @@ public class Login_page extends javax.swing.JFrame {
         });
         jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1283, 30, 50, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background_fitness133.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 780));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/getStartedBG.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,14 +159,14 @@ public class Login_page extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -174,60 +174,58 @@ public class Login_page extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignupActionPerformed
-Register_Page s1 = new Register_Page();
-s1.show();// TODO add your handling code here:
+        Register_Page s1 = new Register_Page();
+        s1.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnsignupActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-         String email = txtEmail.getText();
-         String password = txtPassword.getText();
-         
-         if(email.isEmpty() || password.isEmpty()){
-             JOptionPane.showMessageDialog(this,"Fill all the field before Login.","Missing Information",JOptionPane.WARNING_MESSAGE);
-         }
-         try{
-            Admin admin = dao.admindao.LOGIN(email,password);
-            if(admin != null){
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Fill all the field before Login.", "Missing Information", JOptionPane.WARNING_MESSAGE);
+        }
+        try {
+            Admin admin = dao.admindao.LOGIN(email, password);
+            if (admin != null) {
                 setVisible(false);
                 new Main_Page(email).setVisible(true);
                 this.dispose();
+            } else {
+                User users = dao.userdao.LOGIN(email, password);
+                if (users == null) {
+                    JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    setVisible(false);
+                    new Main_Page(email).setVisible(true);
+                    this.dispose();
+                }
             }
-            else{
-               User users = dao.userdao.LOGIN(email, password);
-               if(users == null )
-                   JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>","Message", JOptionPane.ERROR_MESSAGE);
-               else{
-                   setVisible(false);
-                   new Main_Page(email).setVisible(true);
-                   this.dispose();
-               }
-            }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null,"Database Connection Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Database Connection Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to close Apllication ", "Select", JOptionPane.YES_NO_OPTION);
-if(a == 0){
-    System.exit(0);
-}// TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to close Apllication ", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            System.exit(0);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
-    validateFields();    // TODO add your handling code here:
+        validateFields();    // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyReleased
 
     private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
-validateFields();        // TODO add your handling code here:
+        validateFields();        // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordKeyReleased
 
     private void btnForgetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetPasswordActionPerformed
-    ForgetPassword s1 = new ForgetPassword();
-    s1.show();// TODO add your handling code here:
+        ForgetPassword s1 = new ForgetPassword();
+        s1.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnForgetPasswordActionPerformed
 
     /**
@@ -273,7 +271,7 @@ validateFields();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;

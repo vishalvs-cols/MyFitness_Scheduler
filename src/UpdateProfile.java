@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import dao.ProfileDao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +17,30 @@ public class UpdateProfile extends javax.swing.JFrame {
      */
     public UpdateProfile() {
         initComponents();
+    }
+
+    private String userEmail;
+
+    public UpdateProfile(String email) {
+        initComponents();
+        userEmail = email;
+        loadProfile();
+    }
+
+    private void loadProfile() {
+        String[] p = ProfileDao.getProfile(userEmail);
+        if (p == null) {
+            JOptionPane.showMessageDialog(this, "Profile Not Found");
+            return;
+        }
+        txtName.setText(p[0] == null ? "" : p[0]);
+        txtEmail.setText(p[1] == null ? "" : p[1]);
+        txtAge.setText(p[2] == null ? "" : p[2]);
+        if (p[3] != null) {
+            cmbGender.setSelectedItem(p[3]);
+        }
+        txtHeight.setText(p[4] == null ? "" : p[4]);
+        txtWeight.setText(p[5] == null ? "" : p[5]);
     }
 
     /**
@@ -45,6 +71,7 @@ public class UpdateProfile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 70));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -100,6 +127,11 @@ public class UpdateProfile extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -116,14 +148,40 @@ public class UpdateProfile extends javax.swing.JFrame {
         getContentPane().add(cmbGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 290, 300, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home-background-image-UpdateProfile.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Main_Page(userEmail).setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        String name = txtName.getText().trim();
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Field Cannot be Empty");
+            return;
+        }
+        int age, height, weight;
+        try {
+            age = Integer.parseInt(txtAge.getText().trim());
+            height = Integer.parseInt(txtHeight.getText().trim());
+            weight = Integer.parseInt(txtWeight.getText().trim());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Enter value in Number only");
+            return;
+        // TODO add your handling code here:
+        }
+        if (age < 10 || age > 100 || height < 100 || height > 250 || weight < 20 || weight > 150) {
+            JOptionPane.showMessageDialog(this, "Enter your correct Age, Height and Weight");
+            return;
+        }
+        String gender = cmbGender.getSelectedItem().toString();
+        boolean ok = ProfileDao.updateProfile(userEmail, name, age, gender, height, weight);
+        JOptionPane.showMessageDialog(this, ok ? "Profile Updated" : "Profile Not Updated");
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments

@@ -61,7 +61,7 @@ public class Main_Page extends javax.swing.JFrame {
         btnGetStart = new javax.swing.JButton();
         btnVerifyUser = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -228,8 +228,8 @@ public class Main_Page extends javax.swing.JFrame {
         getContentPane().add(btnVerifyUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(972, 650, -1, 26));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 106, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HomePage Image.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 70, 1410, 760));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/HomePage Image.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -240,14 +240,14 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetStartActionPerformed
 
     private void btnWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkoutActionPerformed
-setVisible(false);
-new GenerateWorkout(email).setVisible(true);
+        setVisible(false);
+        new GenerateWorkout(email).setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnWorkoutActionPerformed
 
     private void btnViewEditDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEditDeleteActionPerformed
-ViewEditDelete ved = new ViewEditDelete();
-ved.show();// TODO add your handling code here:
+        ViewEditDelete ved = new ViewEditDelete();
+        ved.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnViewEditDeleteActionPerformed
 
     private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
@@ -276,46 +276,23 @@ ved.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewWorkoutActionPerformed
-AddNewExercise an = new AddNewExercise();
-an.show();// TODO add your handling code here:
+        AddNewExercise an = new AddNewExercise();
+        an.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnNewWorkoutActionPerformed
 
     private void btnVerifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyUserActionPerformed
-VerifyUsers vu = new VerifyUsers();
-vu.show();// TODO add your handling code here:
+        VerifyUsers vu = new VerifyUsers();
+        vu.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnVerifyUserActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-UpdateProfile up = new UpdateProfile();
-up.show();// TODO add your handling code here:
+        new UpdateProfile(email).setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -343,7 +320,7 @@ up.show();// TODO add your handling code here:
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

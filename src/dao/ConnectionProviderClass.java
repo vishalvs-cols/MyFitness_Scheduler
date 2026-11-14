@@ -20,7 +20,6 @@ public class ConnectionProviderClass {
             String url = "jdbc:postgresql://localhost:5432/myfitness_scheduler"; 
             String username = "postgres";
             String password = "7355Vishal"; 
-//            
             Connection con = DriverManager.getConnection(url, username, password);
             return con;
         }
