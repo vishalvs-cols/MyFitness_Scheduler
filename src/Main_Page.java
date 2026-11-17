@@ -1,5 +1,6 @@
 
 import javax.swing.JOptionPane;
+import dao.Session;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,19 +20,34 @@ public class Main_Page extends javax.swing.JFrame {
      */
     public Main_Page() {
         initComponents();
+        setupButtons();
     }
 
     public Main_Page(String userEmail) {
         initComponents();
         email = userEmail;
-        if (!email.equals("vishal2405.mcmt@gmail.com")) {
-            btnViewEditDelete.setVisible(false);
-            btnManage.setVisible(false);
-            btnNewWorkout.setVisible(false);
-            btnGetStart.setVisible(false);
-            btnVerifyUser.setVisible(false);
-        }
-
+        setupButtons();
+    }
+    
+    private void setupButtons(){
+        System.out.println("MAIN isAdmin=" + Session.isAdmin + " loggedIn=" + Session.isLoggedIn());
+        boolean admin = Session.isAdmin;
+        boolean loggedIn = Session.isLoggedIn();
+        
+//        Sirf Admin
+        btnViewEditDelete.setVisible(admin);
+        btnManage.setVisible(admin);
+        btnNewWorkout.setVisible(admin);
+        btnVerifyUser.setVisible(admin);
+        
+//        user/guest ko 
+        btnWorkout.setVisible(true);
+        btnSchedule.setVisible(true);
+        btnUpdate.setVisible(true);
+        
+//        GetStarted sirf bina login ke, Logout sirf login ke baad
+        btnGetStart.setVisible(!loggedIn);
+        btnLogout.setVisible(loggedIn);
     }
 
     /**
@@ -235,8 +251,8 @@ public class Main_Page extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetStartActionPerformed
-        GetStarted s1 = new GetStarted();
-        s1.show();// TODO add your handling code here:
+        new GetStarted().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnGetStartActionPerformed
 
     private void btnWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkoutActionPerformed

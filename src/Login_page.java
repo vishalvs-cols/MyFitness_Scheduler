@@ -7,6 +7,8 @@ import model.User;
 import model.Admin;
 import javax.swing.JOptionPane;
 import sun.java2d.pipe.ValidatePipe;
+import dao.Session;
+import dao.admindao;
 
 /**
  *
@@ -184,23 +186,25 @@ public class Login_page extends javax.swing.JFrame {
 
         if (email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill all the field before Login.", "Missing Information", JOptionPane.WARNING_MESSAGE);
+            return;
         }
         try {
             Admin admin = dao.admindao.LOGIN(email, password);
             if (admin != null) {
-                setVisible(false);
-                new Main_Page(email).setVisible(true);
-                this.dispose();
+                Session.email =email;
+                Session.isAdmin = true;
             } else {
                 User users = dao.userdao.LOGIN(email, password);
                 if (users == null) {
                     JOptionPane.showMessageDialog(null, "<html><b style = \"colot:red\">Incorrect Username or Password <b></html>", "Message", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    setVisible(false);
-                    new Main_Page(email).setVisible(true);
-                    this.dispose();
+                    return;
                 }
+                Session.email =email;
+                Session.isAdmin = false;
             }
+            System.out.println("LOGIN email=" + email + " isAdmin=" + Session.isAdmin);
+            new Main_Page(email).setVisible(true);
+            dispose();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Database Connection Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

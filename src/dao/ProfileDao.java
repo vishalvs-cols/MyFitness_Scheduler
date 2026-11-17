@@ -56,4 +56,60 @@ public class ProfileDao {
                 return false;
             }
         }
+    // name + email match krta hai ya nii
+    public static boolean userExists(String name,String email){
+        String query = "SELECT 1 from users Where Lower(email) = Lower(?) and Lower(name) = Lower(?)";
+        try(Connection con = ConnectionProviderClass.getcon();
+             PreparedStatement ps = con.prepareStatement(query)){
+            ps.setString(1,email);
+            ps.setString(2,name);
+            return ps.executeQuery().next();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }    
     }
+    public static boolean updatePassword(String email,String password){
+        String query = "Update users Set password = ? Where Lower(email) = Lower(?)";
+        try(Connection con = ConnectionProviderClass.getcon();
+              PreparedStatement ps = con.prepareStatement(query)){
+            ps.setString(1, password);
+            ps.setString(2, email);
+            return ps.executeUpdate() >0;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static String[] getAdminProfile(String email){
+        String query = "SELECT name, email from admin WHERE LOWER(email) = LOWER(?)";
+        try(Connection con = ConnectionProviderClass.getcon();
+                PreparedStatement ps = con.prepareStatement(query)){
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return new String[]{rs.getString("name"), rs.getString("email")};
+            }
+        }catch(SQLException e){
+                e.printStackTrace();
+        }
+        return null;
+    }
+    public static boolean updateAdminName(String email, String name){
+        String query = "UPDATE admin SET name = ? WHERE LOWER(email) = LOWER(?)";
+        try(Connection con = ConnectionProviderClass.getcon();
+               PreparedStatement ps = con.prepareStatement(query)){
+            ps.setString(1, name);
+            ps.setString(2, email);
+            return ps.executeUpdate() > 0;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+         
+    }
+}

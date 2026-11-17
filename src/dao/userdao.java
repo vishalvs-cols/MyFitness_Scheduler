@@ -54,7 +54,7 @@ public class userdao {
     }
     
     public static void update(String email, String newPassword){
-        String query = "update user set password = '" + newPassword +"' where email = '" +email+"'";
+        String query = "update users set password = '" + newPassword +"' where email = '" +email+"'";
         DbOperations.setDataOrDelete(query, "Password Changed Successfully !"); 
     }   
     public static ArrayList<User> getAllRecords(String email){

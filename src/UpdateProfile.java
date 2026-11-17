@@ -5,6 +5,7 @@
  */
 import dao.ProfileDao;
 import javax.swing.JOptionPane;
+import dao.Session;
 
 /**
  *
@@ -26,8 +27,25 @@ public class UpdateProfile extends javax.swing.JFrame {
         userEmail = email;
         loadProfile();
     }
-
+    
     private void loadProfile() {
+        if(Session.isAdmin){
+            String[] a = ProfileDao.getAdminProfile(userEmail);
+            if( a != null){
+                txtName.setText(a[0]);
+                txtEmail.setText(a[1]);
+            } 
+            txtAge.setVisible(false);
+            cmbGender.setVisible(false);
+            txtHeight.setVisible(false);
+            txtWeight.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            
+            return;
+        }
         String[] p = ProfileDao.getProfile(userEmail);
         if (p == null) {
             JOptionPane.showMessageDialog(this, "Profile Not Found");
@@ -106,7 +124,7 @@ public class UpdateProfile extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Weight (cm)");
+        jLabel7.setText("Weight (kg)");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 372, -1, -1));
 
         txtName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -162,6 +180,11 @@ public class UpdateProfile extends javax.swing.JFrame {
         String name = txtName.getText().trim();
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Field Cannot be Empty");
+            return;
+        }
+        if(Session.isAdmin){
+            boolean ok = ProfileDao.updateAdminName(userEmail, name);
+            JOptionPane.showMessageDialog(this, ok ? "Profile Updated" : "Profile Not Updated");
             return;
         }
         int age, height, weight;

@@ -29,14 +29,7 @@ public class Register_Page extends javax.swing.JFrame {
         txtage.setText("");
         txtemail.setText("");
         txtpassword.setText("");
-        String gender = " ";
-        if (rbMale.isSelected()) {
-            gender = "Male";
-        } else if (rbFemale.isSelected()) {
-            gender = "Female";
-        } else {                                                                                                                                                                                                                                
-            gender = "Other";
-        }
+        cmbGender.setSelectedIndex(0);
 
         btnRegister.setEnabled(false);
     }
@@ -46,14 +39,7 @@ public class Register_Page extends javax.swing.JFrame {
         String age = txtage.getText();
         String email = txtemail.getText();
         String password = txtpassword.getText();
-        String gender = " ";
-        if (rbMale.isSelected()) {
-            gender = "Male";
-        } else if (rbFemale.isSelected()) {
-            gender = "Female";
-        } else {
-            gender = "Other";
-        }
+        String gender = cmbGender.getSelectedItem().toString();
 
         System.out.println("Fill All Details");
         System.out.println("Name empty" + name.equals(""));
@@ -105,11 +91,8 @@ public class Register_Page extends javax.swing.JFrame {
         btnRegister = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         txtpassword = new javax.swing.JPasswordField();
-        rbMale = new javax.swing.JRadioButton();
-        rbFemale = new javax.swing.JRadioButton();
-        rbOther = new javax.swing.JRadioButton();
+        cmbGender = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         jLabel2.setMaximumSize(new java.awt.Dimension(1366, 768));
         jLabel2.setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -234,47 +217,11 @@ public class Register_Page extends javax.swing.JFrame {
         });
         jPanel4.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 250, -1));
 
-        buttonGroup1.add(rbMale);
-        rbMale.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        rbMale.setText("MALE");
-        rbMale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbMaleActionPerformed(evt);
-            }
-        });
-        rbMale.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                rbMaleKeyReleased(evt);
-            }
-        });
-        jPanel4.add(rbMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
+        jPanel4.add(cmbGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 250, 20));
 
-        buttonGroup1.add(rbFemale);
-        rbFemale.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        rbFemale.setText("FEMALE");
-        rbFemale.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                rbFemaleKeyReleased(evt);
-            }
-        });
-        jPanel4.add(rbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, -1, -1));
-
-        buttonGroup1.add(rbOther);
-        rbOther.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        rbOther.setText("OTHER");
-        rbOther.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                rbOtherKeyReleased(evt);
-            }
-        });
-        jPanel4.add(rbOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/getStartedBG.png"))); // NOI18N
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 760));
-
-        jLabel3.setText("jLabel3");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/getStartedBG_1.png"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -293,7 +240,7 @@ public class Register_Page extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to close Apllication ", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
-            System.exit(0);    
+            System.exit(0);
         }// TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -308,7 +255,7 @@ public class Register_Page extends javax.swing.JFrame {
         users.setAge(Integer.parseInt(txtage.getText()));
         users.setEmail(txtemail.getText());
         users.setPassword(txtpassword.getText());
-        users.setGender(txtGender.getText());
+        users.setGender(cmbGender.getSelectedItem().toString());
         userdao.REGISTER(users);
         RESET();
         Login_page s1 = new Login_page();
@@ -341,22 +288,6 @@ public class Register_Page extends javax.swing.JFrame {
     private void txtpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyReleased
         validateFields();   // TODO add your handling code here:
     }//GEN-LAST:event_txtpasswordKeyReleased
-
-    private void rbMaleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbMaleKeyReleased
-        validateFields(); // TODO add your handling code here:
-    }//GEN-LAST:event_rbMaleKeyReleased
-
-    private void rbFemaleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbFemaleKeyReleased
-        validateFields(); // TODO add your handling code here:
-    }//GEN-LAST:event_rbFemaleKeyReleased
-
-    private void rbOtherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbOtherKeyReleased
-        validateFields();   // TODO add your handling code here:
-    }//GEN-LAST:event_rbOtherKeyReleased
-
-    private void rbMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbMaleActionPerformed
 
     private void txtFullnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullnameActionPerformed
         // TODO add your handling code here:
@@ -409,14 +340,11 @@ public class Register_Page extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton rbFemale;
-    private javax.swing.JRadioButton rbMale;
-    private javax.swing.JRadioButton rbOther;
     private javax.swing.JLabel txtAge;
     private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtFullName;
