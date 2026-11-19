@@ -41,11 +41,6 @@ public class Register_Page extends javax.swing.JFrame {
         String password = txtpassword.getText();
         String gender = cmbGender.getSelectedItem().toString();
 
-        System.out.println("Fill All Details");
-        System.out.println("Name empty" + name.equals(""));
-        System.out.println("age empty" + age.equals(""));
-        System.out.println("email empty" + email.equals(""));
-        System.out.println("password empty" + password.equals(""));
         if (!name.equals("") && email.matches(emailPattern) && !password.equals("")) {
             btnRegister.setEnabled(true);
         } else {

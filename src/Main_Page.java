@@ -30,7 +30,6 @@ public class Main_Page extends javax.swing.JFrame {
     }
     
     private void setupButtons(){
-        System.out.println("MAIN isAdmin=" + Session.isAdmin + " loggedIn=" + Session.isLoggedIn());
         boolean admin = Session.isAdmin;
         boolean loggedIn = Session.isLoggedIn();
         
@@ -256,6 +255,12 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetStartActionPerformed
 
     private void btnWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkoutActionPerformed
+        if(!Session.isLoggedIn()){
+            JOptionPane.showMessageDialog(this, "Create an Account or if you have created already login");
+            new GetStarted().setVisible(true);
+            dispose();
+            return;
+        }
         setVisible(false);
         new GenerateWorkout(email).setVisible(true);
 // TODO add your handling code here:
@@ -272,6 +277,9 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        Session.logout();
+        dispose();
+        new Main_Page().setVisible(true);
         int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to Logout", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
             setVisible(false);
@@ -280,6 +288,12 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
+        if(!Session.isLoggedIn()){
+            JOptionPane.showMessageDialog(this, "Create an Account or if you have created already login");
+            new GetStarted().setVisible(true);
+            dispose();
+            return;
+        }
         new Schedule(email).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnScheduleActionPerformed
@@ -292,6 +306,12 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewWorkoutActionPerformed
+        if(!Session.isLoggedIn()){
+            JOptionPane.showMessageDialog(this, "Create an Account or if you have created already login");
+            new GetStarted().setVisible(true);
+            dispose();
+            return;
+        }
         AddNewExercise an = new AddNewExercise();
         an.show();// TODO add your handling code here:
     }//GEN-LAST:event_btnNewWorkoutActionPerformed
@@ -302,6 +322,12 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerifyUserActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        if(!Session.isLoggedIn()){
+            JOptionPane.showMessageDialog(this, "Create an Account or if you have created already login");
+            new GetStarted().setVisible(true);
+            dispose();
+            return;
+        }
         new UpdateProfile(email).setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
