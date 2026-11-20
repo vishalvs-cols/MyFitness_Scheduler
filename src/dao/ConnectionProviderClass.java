@@ -15,11 +15,9 @@ public class ConnectionProviderClass {
     public static Connection getcon(){
         try{
             Class.forName("org.postgresql.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/myfitness_scheduler","postgres","7355Vishal");
-//            return con;
             String url = "jdbc:postgresql://localhost:5432/myfitness_scheduler"; 
             String username = "postgres";
-            String password = "7355Vishal"; 
+            String password = "Your_Password"; 
             Connection con = DriverManager.getConnection(url, username, password);
             return con;
         }
