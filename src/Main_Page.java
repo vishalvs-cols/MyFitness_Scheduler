@@ -277,13 +277,11 @@ public class Main_Page extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        Session.logout();
-        dispose();
-        new Main_Page().setVisible(true);
         int a = JOptionPane.showConfirmDialog(null, "Do You Really Want to Logout", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
-            setVisible(false);
-            new Login_page().setVisible(true);
+            Session.logout();
+            dispose();
+            new Main_Page().setVisible(true);
         }// TODO add your handling code here:
     }//GEN-LAST:event_btnLogoutActionPerformed
 

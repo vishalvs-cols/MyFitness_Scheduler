@@ -57,6 +57,7 @@ public class ManageWorkout extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
@@ -156,9 +157,10 @@ public class ManageWorkout extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HomePage Image 700.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/HomePage Image 700_1.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,6 +260,7 @@ while(itr.hasNext()){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

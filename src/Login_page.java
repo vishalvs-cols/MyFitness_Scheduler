@@ -24,7 +24,6 @@ public class Login_page extends javax.swing.JFrame {
     public Login_page() {
         initComponents();
         btnlogin.setEnabled(false);
-
     }
 
     public void validateFields() {
@@ -74,11 +73,6 @@ public class Login_page extends javax.swing.JFrame {
         jLabel1.setText("Email");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 77, 25));
 
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEmailKeyReleased(evt);
@@ -108,11 +102,6 @@ public class Login_page extends javax.swing.JFrame {
         jLabel3.setText("MEMBER LOGIN");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 200, -1));
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyReleased(evt);
@@ -167,14 +156,6 @@ public class Login_page extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     private void btnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignupActionPerformed
         Register_Page s1 = new Register_Page();
         s1.show();// TODO add your handling code here:
@@ -202,7 +183,6 @@ public class Login_page extends javax.swing.JFrame {
                 Session.email =email;
                 Session.isAdmin = false;
             }
-            System.out.println("LOGIN email=" + email + " isAdmin=" + Session.isAdmin);
             new Main_Page(email).setVisible(true);
             dispose();
         } catch (Exception e) {
